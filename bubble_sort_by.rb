@@ -36,15 +36,33 @@ p array
 puts
 puts "Sorted:"
 
-
+puts "(reverse)"
 bubble_sort_by(array) do |left, right|
   right - left
 end
 
 p array
 
+puts "(forward)"
 bubble_sort_by(array) do |left, right|
   left - right
+end
+
+p array
+
+
+puts "string array test:"
+
+array = ["hi", "hello", "hey"]
+
+bubble_sort_by(array) do |left,right|
+  right.length - left.length
+end
+
+p array
+
+bubble_sort_by(array) do |left,right|
+  left.length - right.length
 end
 
 p array
