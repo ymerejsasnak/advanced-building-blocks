@@ -6,15 +6,12 @@ def bubble_sort(array)
   		if array[index] > array[index + 1]
   		  array[index], array[index + 1] = array[index + 1], array[index]
   		  
-  		  #print as it occurs
-  		  p array 
-
-  	  end
+  		end
     
     end
   end
 
-  
+  return array
 end
 
 
@@ -31,8 +28,13 @@ end
 
 
 #test
-array = Array.new(10) {|x| x = rand(100)}
+array = Array.new(20) {|x| x = rand(100)}
 
+puts
+puts "Unsorted:"
 p array
-
-bubble_sort(array)
+puts
+puts "Sorted:"
+p bubble_sort(array)
+puts
+puts
