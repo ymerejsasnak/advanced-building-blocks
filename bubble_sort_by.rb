@@ -3,14 +3,11 @@ def bubble_sort_by(array)
   0.upto(array.length - 2) do |count|
   	0.upto(array.length - 2 - count) do |index|
   		
-       
-  		case var = yield(index, index + 1)
-      when var < 0
-        array[index], array[index + 1] = array[index], array[index + 1]
-      when var > 0
+      var = yield array[index], array[index + 1]
+  		if var > 0
         array[index], array[index + 1] = array[index + 1], array[index]
       end
-    
+         
     end
   end
 
@@ -39,15 +36,17 @@ p array
 puts
 puts "Sorted:"
 
-puts
+
 bubble_sort_by(array) do |left, right|
   right - left
 end
 
-puts
+p array
+
 bubble_sort_by(array) do |left, right|
   left - right
 end
 
-puts
+p array
+
 puts
