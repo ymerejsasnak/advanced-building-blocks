@@ -67,5 +67,22 @@ module Enumerable
 
 
 
+  def my_any?
+
+  	return self.to_enum(:my_any?) unless block_given?
+
+  	for i in 0..(self.to_a.size - 1) do
+
+  		if yield self.to_a[i]
+  			return true
+  		end
+
+  	end
+
+    return false
+
+  end
+
+
 
 end
