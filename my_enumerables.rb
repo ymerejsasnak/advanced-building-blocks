@@ -139,6 +139,20 @@ module Enumerable
 
 
 
+  def my_inject(initial_value = self.to_a[0])
+    
+    initial_value == self.to_a[0] ? start_index = 1 : start_index = 0
+    result = initial_value
+    
+    for i in start_index..(self.to_a.size - 1) do
+      result = yield(result, self.to_a[i])
+    end
+
+    return result
+
+  end
+
+
 
 
 end
