@@ -1,18 +1,22 @@
 module Enumerable
 
+
 	def my_each
 
-    return self unless block_given?
-    counter = 0
-    0.upto(self.size - 1) do
-      
-    	yield(self[counter])
-      counter += 1
-    
+    return self.to_enum unless block_given?
+
+    for i in 0..(self.length - 1) do
+      yield self[i]
     end
 
 	end
 
+
+
+  def my_each_with_index
+
+
+  end
 
 
 
