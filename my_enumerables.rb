@@ -35,10 +35,10 @@ module Enumerable
 
     result = []
 
-    for i in 0..(self.size - 1) do
+    for i in 0..(self.to_a.size - 1) do
 
-    	if yield self[i]
-    	  result << self[i]
+    	if yield self.to_a[i]
+    	  result << self.to_a[i]
     	end
 
     end
