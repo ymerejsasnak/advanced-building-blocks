@@ -5,13 +5,11 @@ module Enumerable
 
     return self.to_enum(:my_each) unless block_given?
 
-    for i in 0..(self.to_a.size - 1) do
-      yield self.to_a[i]
+    for i in self do
+      yield i
     end
 
-    return self
-
-	end
+  end
 
 
 
