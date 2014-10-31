@@ -85,4 +85,25 @@ module Enumerable
 
 
 
+  def my_none?
+
+  	return self.to_enum(:my_none?) unless block_given?
+
+  	for i in 0..(self.to_a.size - 1) do
+    
+      if yield self.to_a[i]
+      	return false
+      end
+
+  	end
+
+    return true
+
+  end
+
+
+
+
+
+
 end
