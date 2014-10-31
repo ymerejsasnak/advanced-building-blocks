@@ -143,7 +143,7 @@ module Enumerable
     
     initial_value == self.to_a[0] ? start_index = 1 : start_index = 0
     result = initial_value
-    
+
     for i in start_index..(self.to_a.size - 1) do
       result = yield(result, self.to_a[i])
     end
@@ -152,7 +152,10 @@ module Enumerable
 
   end
 
+end
 
 
-
+#test method for my_inject
+def multiply_els(array)
+  array.my_inject {|result, x| result * x}
 end
