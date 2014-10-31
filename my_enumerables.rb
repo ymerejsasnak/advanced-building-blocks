@@ -123,6 +123,20 @@ module Enumerable
 
 
 
+  def my_map
+
+    return self.to_enum(:my_map) unless block_given?
+
+    return_array = []
+
+    for i in 0..(self.to_a.size - 1) do
+      return_array[i] = yield self.to_a[i]
+    end
+
+    return return_array
+    
+  end
+
 
 
 
