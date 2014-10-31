@@ -33,17 +33,17 @@ module Enumerable
 
   	return self.to_enum(:my_select) unless block_given?
 
-    result = []
+    selected = []
 
     for i in 0..(self.to_a.size - 1) do
 
     	if yield self.to_a[i]
-    	  result << self.to_a[i]
+    	  selected << self.to_a[i]
     	end
 
     end
     
-    return result
+    return selected
 
   end
 
@@ -100,6 +100,27 @@ module Enumerable
     return true
 
   end
+
+
+
+  def my_count
+
+  	return self.size unless block_given?
+
+  	count = 0
+
+  	for i in 0..(self.to_a.size - 1) do
+
+  		if yield self.to_a[i]
+  			count += 1
+  		end
+
+  	end
+
+  	return count
+
+  end
+
 
 
 
