@@ -17,7 +17,7 @@ module Enumerable
     
     return self.to_enum(:my_each_with_index) unless block_given?
 
-    for i in 0..(self.length - 1) do
+    for i in 0..(self.size - 1) do
     	yield self.to_a[i], i
     end
 
@@ -33,7 +33,7 @@ module Enumerable
 
     selected = []
 
-    for i in 0..(self.to_a.size - 1) do
+    for i in 0..(self.size - 1) do
 
     	if yield self.to_a[i]
     	  selected << self.to_a[i]
@@ -51,7 +51,7 @@ module Enumerable
 
   	return self.to_enum(:my_all?) unless block_given?
 
-    for i in 0..(self.to_a.size - 1) do
+    for i in 0..(self.size - 1) do
       
       unless yield self.to_a[i]
       	return false
@@ -69,7 +69,7 @@ module Enumerable
 
   	return self.to_enum(:my_any?) unless block_given?
 
-  	for i in 0..(self.to_a.size - 1) do
+  	for i in 0..(self.size - 1) do
 
   		if yield self.to_a[i]
   			return true
@@ -87,7 +87,7 @@ module Enumerable
 
   	return self.to_enum(:my_none?) unless block_given?
 
-  	for i in 0..(self.to_a.size - 1) do
+  	for i in 0..(self.size - 1) do
     
       if yield self.to_a[i]
       	return false
@@ -107,7 +107,7 @@ module Enumerable
 
   	count = 0
 
-  	for i in 0..(self.to_a.size - 1) do
+  	for i in 0..(self.size - 1) do
 
   		if yield self.to_a[i]
   			count += 1
@@ -127,7 +127,7 @@ module Enumerable
 
     return_array = []
 
-    for i in 0..(self.to_a.size - 1) do
+    for i in 0..(self.size - 1) do
       return_array[i] = yield self.to_a[i]
     end
 
@@ -142,7 +142,7 @@ module Enumerable
     initial_value == self.to_a[0] ? start_index = 1 : start_index = 0
     result = initial_value
 
-    for i in start_index..(self.to_a.size - 1) do
+    for i in start_index..(self.size - 1) do
       result = yield(result, self.to_a[i])
     end
 
