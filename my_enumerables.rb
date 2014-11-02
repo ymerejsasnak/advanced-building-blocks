@@ -5,8 +5,8 @@ module Enumerable
 
     return self.to_enum(:my_each) unless block_given?
 
-    for i in self do
-      yield i
+    for element in self do
+      yield element
     end
 
   end
@@ -17,8 +17,8 @@ module Enumerable
     
     return self.to_enum(:my_each_with_index) unless block_given?
 
-    for i in 0..(self.size - 1) do
-    	yield self.to_a[i], i
+    for index in 0..(self.size - 1) do
+    	yield self.to_a[index], index
     end
 
     return self
@@ -33,14 +33,18 @@ module Enumerable
 
     selected = []
 
-    for i in 0..(self.size - 1) do
+    for element in self do
 
-    	if yield self.to_a[i]
-    	  selected << self.to_a[i]
+    	if yield element
+    	  selected << element
     	end
 
     end
     
+    if self.is_a?(Hash)
+      selected = Hash[selected]
+    end
+
     return selected
 
   end
@@ -51,9 +55,9 @@ module Enumerable
 
   	return self.to_enum(:my_all?) unless block_given?
 
-    for i in 0..(self.size - 1) do
+    for element in self do
       
-      unless yield self.to_a[i]
+      unless yield element
       	return false
       end
 
@@ -69,9 +73,9 @@ module Enumerable
 
   	return self.to_enum(:my_any?) unless block_given?
 
-  	for i in 0..(self.size - 1) do
+  	for element in self do
 
-  		if yield self.to_a[i]
+  		if yield element
   			return true
   		end
 
@@ -87,9 +91,9 @@ module Enumerable
 
   	return self.to_enum(:my_none?) unless block_given?
 
-  	for i in 0..(self.size - 1) do
+  	for element in self do
     
-      if yield self.to_a[i]
+      if yield element
       	return false
       end
 
@@ -107,9 +111,9 @@ module Enumerable
 
   	count = 0
 
-  	for i in 0..(self.size - 1) do
+  	for element in self do
 
-  		if yield self.to_a[i]
+  		if yield element
   			count += 1
   		end
 
@@ -127,8 +131,8 @@ module Enumerable
 
     return_array = []
 
-    for i in 0..(self.size - 1) do
-      return_array[i] = yield self.to_a[i]
+    for index in 0..(self.size - 1) do
+      return_array[index] = yield self.to_a[index]
     end
 
     return return_array
@@ -142,8 +146,8 @@ module Enumerable
     initial_value == self.to_a[0] ? start_index = 1 : start_index = 0
     result = initial_value
 
-    for i in start_index..(self.size - 1) do
-      result = yield(result, self.to_a[i])
+    for index in start_index..(self.size - 1) do
+      result = yield(result, self.to_a[index])
     end
 
     return result
