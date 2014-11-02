@@ -1,7 +1,7 @@
 module Enumerable
 
 
-	def my_each
+  def my_each
 
     return self.to_enum(:my_each) unless block_given?
 
@@ -17,7 +17,7 @@ module Enumerable
     
     return self.to_enum(:my_each_with_index) unless block_given?
 
-    for i in 0..(self.to_a.size - 1) do
+    for i in 0..(self.length - 1) do
     	yield self.to_a[i], i
     end
 
