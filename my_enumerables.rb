@@ -125,16 +125,22 @@ module Enumerable
 
 
 
-  def my_map(proc)
+  def my_map(proc=nil)
 
-    #return self.to_enum(:my_map) unless block_given? 
-    
+    return self.to_enum(:my_map) unless proc 
+
     return_array = []
-
+    
     for index in 0..(self.size - 1) do
       return_array[index] = proc.call(self.to_a[index])
     end
 
+    if block_given?
+      for index in 0..(self.size - 1) do
+        return_array[index] = yield(return_array[index])
+      end
+    end
+    
     return return_array
     
   end
